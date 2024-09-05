@@ -7,7 +7,6 @@
 *.jsonl
 
 # Private
-assets
 log
 wandb
 ckpts
