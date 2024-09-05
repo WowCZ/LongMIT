@@ -1,6 +1,6 @@
 # LongMIT: Essential Factors in Crafting Effective Long Context Multi-Hop Instruction Datasets
 
-<div align=center><img width="400" src="assets/figs/mimg.png"/></div>
+<div align=center><img width="400" src="assets/mimg.png"/></div>
 
 ## 🌏 Environments
 ### Reliant Repository
