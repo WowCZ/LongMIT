@@ -20,8 +20,8 @@ from glob import glob
 from typing import List
 from agent.utils import *
 from agent.base_agent import AgentFlow
-from iclm.data_process import read_jsonl_file
-from iclm.embed_docs import initial_embedder
+from doc_process.data_process import read_jsonl_file
+from doc_process.embed_docs import initial_embedder
 
 
 class LongQAAgent(AgentFlow):

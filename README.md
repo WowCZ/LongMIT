@@ -10,12 +10,13 @@ pip install -r requirements.txt
 ```
 
 ## 🚀 Crafting Long Context MIT
-### Step-1: Embedding source text corpus:
+### Organize the private text corpus with embedding models
+#### Step-1: Embedding source text corpus:
 ```shell
 python doc_process/embed_doc.py --config doc_process/config/embedding/embedding_example.yaml --num_process_nodes 8
 ```
 
-### Step-2: Build document graph with approximated knn
+#### Step-2: Build document graph with approximated knn
 ```shell
 python doc_process/build_doc_graph.py --command train_index --config doc_process/config/faiss/example_knn.yaml --xb example
 wait
@@ -27,11 +28,14 @@ python doc_process/build_doc_graph.py --command search --config doc_process/conf
 wait
 ```
 
-### Step-3: Traverse document graph
+#### Step-3: Traverse document graph
 ```shell
 python doc_process/traverse_doc_graph.py
 ```
-
+### Multi-Agent-Driven LongMIT Data Synthesis
+```shell
+python agent/distribute_run_agents.py --config agent/configs/longqa_example.yaml
+```
 
 ## Citation
 
