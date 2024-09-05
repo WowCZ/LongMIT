@@ -1,5 +1,7 @@
 # LongMIT: Essential Factors in Crafting Effective Long Context Multi-Hop Instruction Datasets
 
+<div align=center><img width="400" height=400" src="assets/figs/mimg.png"/></div>
+
 ## 🌏 Environments
 ### Reliant Repository
 ```shell
@@ -10,7 +12,7 @@ pip install -r requirements.txt
 ```
 
 ## 🚀 Crafting Long Context MIT
-### Organize the private text corpus with embedding models
+### 1. Organize the private text corpus with embedding models
 #### Step-1: Embedding source text corpus:
 ```shell
 python doc_process/embed_doc.py --config doc_process/config/embedding/embedding_example.yaml --num_process_nodes 8
@@ -32,7 +34,7 @@ wait
 ```shell
 python doc_process/traverse_doc_graph.py
 ```
-### Multi-Agent-Driven LongMIT Data Synthesis
+### 2. Multi-Agent-Driven LongMIT Data Synthesis
 ```shell
 python agent/distribute_run_agents.py --config agent/configs/longqa_example.yaml
 ```
