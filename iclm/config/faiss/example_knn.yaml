@@ -1,0 +1,36 @@
+# Set you FAISS related hyperparameters here
+d: 768 # embedding dimension
+output: faiss/path
+index:
+  prod:
+    - 'IVF500,PQ256' #32768 is the number of clusters 
+nprobe:
+  prod:
+    - 64
+  non-prod:
+    - 1
+    - 2
+    - 4
+    - 8
+    - 16
+    - 32
+    - 128
+k: 10 # number of retrieved kNNs  
+metric: METRIC_INNER_PRODUCT
+index_shard_size: 50000000 # 50M
+query_batch_size: 50000000 # 50M
+evaluation_sample: 10000
+training_sample: 50000 # 16777216 # 33554432 # 4194304
+
+datasets:
+  example:
+    d: 768
+    root: embed/path
+    size: 212908
+    files:
+    - domain: example
+      dtype: float32
+      embed_model: bge_base15_embedder
+      format: raw
+      name: train-65d6baf51fa1-001742.npy
+      size: 53234

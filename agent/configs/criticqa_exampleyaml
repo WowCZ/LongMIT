@@ -1,0 +1,7 @@
+domain: criticqa_example
+datasets: your_dataset_path/*.jsonl
+lang: en
+save_dir: your_dataset_path
+llm_api:
+  model_name: xxx
+  api_base: http://xxx.xxx.xxx.xxx:xxx/v1

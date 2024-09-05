@@ -1,0 +1,25 @@
+embedder:
+  embedder_name: bge_base15_embedder
+  backbone_type: BGE
+  init_backbone: BAAI/bge-base-zh-v1.5
+  flashatt: false
+  pool_type: cls
+  peft_lora: false
+  which_layer: -1
+  max_length: 512
+  task_prompt: false
+  checkpoint_batch_size: -1
+  mytryoshka_size: 768
+  embedding_norm: false
+  embedder_ckpt_path:
+  reserved_layers:
+  device: cuda
+  encode_batch_size: 2048
+
+data:
+  domain: name
+  input_dir: text/path
+  doc_glob: "*.jsonl"
+  embed_output_dir: embed/path
+  knn_output_dir: knn/path
+  iclm_output_dir: iclm/path

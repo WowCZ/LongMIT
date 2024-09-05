@@ -1,0 +1,17 @@
+# Python
+**__pycache__**
+*.pyc
+*.egg-info
+*.log
+*.json
+*.jsonl
+
+# Private
+assets
+log
+wandb
+ckpts
+results
+scripts
+data
+examples
