@@ -286,49 +286,15 @@ def distribute_embedding_wiki_qas(config_path: str, num_process_nodes: int, qa_k
                     fw.write(json.dumps(doc, ensure_ascii=False)+'\n')
                     fw.flush()
 
-                    # with mp.Pool(processes=len(args_list)) as pool:
-                    #     global_batch_embeds = []
-                    #     for e in tqdm(pool.imap(distribute_embed_batch, args_list), total=len(args_list)):
-                    #         global_batch_embeds.append(e)
-
-                    #     global_similarity_matrix = torch.concat(global_batch_embeds, dim=0)
-                    #     mcs = matrix_cosine_similarity(global_similarity_matrix)
-
-                    #     doc['sqa_cosine_similarity'] = mcs
-                    #     fw.write(json.dumps(doc, ensure_ascii=False)+'\n')
-                    #     fw.flush()
-
 
 
 if __name__ == '__main__':
     import argparse
 
     parser = argparse.ArgumentParser(description='embed_docs')
-    parser.add_argument('--config', type=str, default='/fs-computility/llm/chenzhi/AwesomeICL/iclm/config/embedding_config.yaml', help='embedding config')
+    parser.add_argument('--config', type=str, default='iclm/config/embedding_example.yaml', help='embedding config')
     parser.add_argument('--num_process_nodes', type=int, default=8, help='Number of GPUs')
     args = parser.parse_args()
 
-    # config_path = '/fs-computility/llm/chenzhi/AwesomeICL/iclm/config/embedding_config.yaml'
-    # embedding_documents(args.config)
-
-    # # validate Pool operation
-    # def sleep(cnt):
-    #     import time
-    #     time.sleep(cnt)
-    #     print(f'>>> Sleep {cnt}s!')
-
-    # time_count = list(range(1, 6))
-    # with Pool(processes=len(time_count)) as pool:
-    #     for _ in tqdm(pool.imap(sleep, time_count), total=len(time_count)):
-    #         pass
-
-    #     print('>>> End of the Code!')
-
     # for documents
     distribute_embedding_documents(args.config, args.num_process_nodes)
-
-    # # for qa pairs
-    # distribute_embedding_wiki_qas(args.config, args.num_process_nodes)
-
-    # embed_path = '/fs-computility/llm/shared/chenzhi/internlm25/chinese/embed'
-    # generate_faiss_config(embed_path, 768, np.dtype(np.float32))
