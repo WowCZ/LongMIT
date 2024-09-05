@@ -3,7 +3,6 @@
 <div align=center><img src="assets/mimg-w.png"/></div>
 
 ## 🌏 Environments
-### Reliant Repository
 ```shell
 git https://github.com/WowCZ/LongMIT.git
 cd LongMIT
