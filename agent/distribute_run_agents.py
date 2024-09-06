@@ -48,7 +48,7 @@ if __name__ == '__main__':
     import argparse
 
     parser = argparse.ArgumentParser(description='embed_docs')
-    parser.add_argument('--config', type=str, default='agent/configs/longqa_kepuchina_iclm.yaml', help='longqa agent config')
+    parser.add_argument('--config', type=str, default='agent/configs/longqa_example.yaml', help='longqa agent config')
     parser.add_argument('--num_process', type=int, default=16, help='Number of Threads')
     parser.add_argument('--mode', type=str, default='longqa', help='Name of agents')
     parser.add_argument('--world_rank', type=int, default=8, help='Number of GPUs')

@@ -21,7 +21,7 @@ import yaml
 from tqdm import tqdm
 import subprocess
 from omegaconf import OmegaConf
-from iclm.utils import read_jsonl_file, memmap
+from doc_process.utils import read_jsonl_file, memmap
 
 
 def read_embedding_conf(config_path: str):
