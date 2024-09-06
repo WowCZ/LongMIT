@@ -43,10 +43,10 @@ python agent/distribute_run_agents.py --config agent/configs/longqa_example.yaml
 If you find the content of this repo useful in your work, please cite it as follows via `\usepackage{biblatex}`:
 
 ```bibtex
-@article{chen2024what,
+@article{chen2024essential,
   title={What are the Essential Factors in Crafting Effective Long Context Multi-Hop Instruction Datasets? Insights and Best Practices},
-  author={Zhi Chen, Qiguang Chen, Libo Qin, Qipeng Guo, Haijun Lv, Yicheng Zou, Wanxiang Che, Hang Yan, Kai Chen, Dahua Lin},
-  journal={arXiv preprint arXiv:xxx},
+  author={Chen, Zhi and Chen, Qiguang and Qin, Libo and Guo, Qipeng and Lv, Haijun and Zou, Yicheng and Che, Wanxiang and Yan, Hang and Chen, Kai and Lin, Dahua},
+  journal={arXiv preprint arXiv:2409.01893},
   year={2024}
 }
 ```

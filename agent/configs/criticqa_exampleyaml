@@ -4,4 +4,4 @@ lang: en
 save_dir: your_dataset_path
 llm_api:
   model_name: xxx
-  api_base: http://xxx.xxx.xxx.xxx:xxx/v1
+  api_base: http://xxx
