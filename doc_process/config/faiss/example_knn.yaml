@@ -23,12 +23,12 @@ evaluation_sample: 10000
 training_sample: 50000 # 16777216 # 33554432 # 4194304
 
 datasets:
-  example:
+  wiki: # domain name
     d: 768
-    root: embed/path
+    root: your_local_path # path where saves embedding files
     size: 212908
     files:
-    - domain: example
+    - domain: wiki
       dtype: float32
       embed_model: bge_base15_embedder
       format: raw

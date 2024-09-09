@@ -1,6 +1,6 @@
-domain: longqa_example
-datasets: your_dataset_path/*.jsonl
-lang: zh
+domain: longqa_wiki
+datasets: assets/example_datasets/*_text_corpus.jsonl
+lang: en # en or zh
 save_dir: your_dataset_path
 llm_api:
   model_name: xxx
@@ -24,7 +24,7 @@ pipelines:
     embedder:
       embedder_name: bge_base15_embedder
       backbone_type: BGE
-      init_backbone: embedding_model
+      init_backbone: BAAI/bge-base-en-v1.5
       flashatt: false
       pool_type: cls
       peft_lora: false

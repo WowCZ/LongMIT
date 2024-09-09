@@ -1,7 +1,7 @@
-embedder:
+embedder: # no change
   embedder_name: bge_base15_embedder
   backbone_type: BGE
-  init_backbone: BAAI/bge-base-zh-v1.5
+  init_backbone: BAAI/bge-base-en-v1.5
   flashatt: false
   pool_type: cls
   peft_lora: false
@@ -17,7 +17,7 @@ embedder:
   encode_batch_size: 2048
 
 data:
-  domain: name
-  input_dir: text/path
-  doc_glob: "*.jsonl"
-  embed_output_dir: embed/path
+  domain: wiki # source domain of text corpus
+  input_dir: assets/example_datasets # path of original text files
+  doc_glob: "*_text_corpus.jsonl" # matched format of text files
+  embed_output_dir: your_local_path # temporary folder to save embedding files

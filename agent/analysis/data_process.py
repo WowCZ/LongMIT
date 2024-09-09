@@ -19,7 +19,7 @@ from tqdm import tqdm
 from glob import glob
 from typing import List, Union
 from multiprocessing import Pool
-from iclm.data_process import read_jsonl_file
+from doc_process.utils import read_jsonl_file
 
 
 def recover_multihop_info(jsonl_file: str, saved_dir: str):

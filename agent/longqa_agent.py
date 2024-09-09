@@ -288,7 +288,7 @@ class LongQAAgent(AgentFlow):
         return multihop_qa_pairs, selected_qa_ids
 
 if __name__ == '__main__':
-    agent_config = 'agent/configs/longqa_kepuchina_random.yaml'
+    agent_config = 'agent/configs/longqa_example.yaml'
     longqa_generator = LongQAAgent(agent_config)
     longqa_generator.run()
 
