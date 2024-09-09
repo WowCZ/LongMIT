@@ -69,7 +69,7 @@ python agent/distribute_run_agents.py --config agent/configs/longqa_example.yaml
     "multihop_qas": ["xxx", "xxx"],
     "selected_qa_ids": ["xxx", "xxx"],
     "clustered_mqa_info": ["xxx", "xxx"],
-    "token_count": 1024,
+    "token_count": 131072,
 }
 ```
 
