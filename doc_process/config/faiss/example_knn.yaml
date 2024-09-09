@@ -32,5 +32,5 @@ datasets:
       dtype: float32
       embed_model: bge_base15_embedder
       format: raw
-      name: train-65d6baf51fa1-001742.npy
+      name: xxx.npy
       size: 53234

@@ -21,5 +21,3 @@ data:
   input_dir: text/path
   doc_glob: "*.jsonl"
   embed_output_dir: embed/path
-  knn_output_dir: knn/path
-  iclm_output_dir: iclm/path

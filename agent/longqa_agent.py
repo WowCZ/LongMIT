@@ -292,7 +292,4 @@ if __name__ == '__main__':
     longqa_generator = LongQAAgent(agent_config)
     longqa_generator.run()
 
-    # /fs-computility/llm/shared/chenzhi/miniconda3/envs/embedding/bin/python agent/longqa_agent.py
-
-
 

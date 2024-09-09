@@ -83,7 +83,7 @@ def generate_faiss_config(embed_path: str, dim: int, dt: np.dtype):
     cfg["files"] = files
 
     print(yaml.dump(cfg))
-    with open('/fs-computility/llm/chenzhi/AwesomeICL/iclm/config/faiss/template.yaml', 'w') as fw:
+    with open('doc_process/config/faiss/template.yaml', 'w') as fw:
         fw.write(yaml.dump(cfg))
 
 
@@ -224,75 +224,12 @@ def distribute_embedding_documents(config_path: str, num_process_nodes: int):
     generate_faiss_config(output_dir, embed_dim, np.dtype(np.float32))
 
 
-def distribute_embedding_wiki_qas(config_path: str, num_process_nodes: int, qa_key: str='sqa_pairs'):
-    embedder_conf, data_conf = read_embedding_conf(config_path)
-
-    encode_batch_size = embedder_conf.encode_batch_size
-    embedder_name = embedder_conf.embedder_name
-    output_dir = data_conf.embed_output_dir
-    domain = data_conf.domain
-    similarity_path = os.path.join(output_dir, domain, embedder_name)
-    if not os.path.exists(similarity_path):
-        os.makedirs(similarity_path)
-
-    doc_files = glob.glob(f'{data_conf.input_dir}/{data_conf.doc_glob}')
-    for doc_file in doc_files:
-        doc_name = doc_file.split('/')[-1].split('.')[0]
-
-        wiki_similarity_file = os.path.join(similarity_path, f'{doc_name}.jsonl')
-        with open(wiki_similarity_file, 'w') as fw:
-            with read_jsonl_file(doc_file) as doc_reader:
-                for doc in tqdm(doc_reader):
-                    sqa_pairs = []
-                    lang = doc['lang']
-                    if lang == 'en':
-                        qk = 'question'
-                        ak = 'answer'
-                    else:
-                        qk = '问题'
-                        ak = '回答'
-        
-                    for sqas in doc[qa_key]:
-                        for sqa in sqas:
-                            try:
-                                sqa_pairs.append(sqa[qk] + '\n' + sqa[ak])
-                            except:
-                                if qk == 'question':
-                                    qk = '问题'
-                                    ak = '回答'
-                                else:
-                                    qk = 'question'
-                                    ak = 'answer'
-                                sqa_pairs.append(sqa[qk] + '\n' + sqa[ak])
-
-                    print(f'>>> {doc_name} has {len(sqa_pairs)} QA pairs!')
-                    process_batch_size = math.ceil(len(sqa_pairs) / num_process_nodes)
-                    args_list = []
-                    for pi, i in enumerate(range(0, len(sqa_pairs), process_batch_size)):
-                        process_docs = sqa_pairs[i:i+process_batch_size]
-                        args_list.append((pi, process_docs, encode_batch_size, embedder_conf))
-                        print(f'>>> args list: {len(args_list)}')
-                        print(f'>>> sqa pairs: {len(process_docs)}')
-                        # print(process_docs)
-                    
-                    global_batch_embeds = []
-                    for args in args_list:
-                        global_batch_embeds.append(distribute_embed_batch(args))
-                        
-                    global_similarity_matrix = torch.concat(global_batch_embeds, dim=0)
-                    mcs = matrix_cosine_similarity(global_similarity_matrix)
-
-                    doc['sqa_cosine_similarity'] = mcs
-                    fw.write(json.dumps(doc, ensure_ascii=False)+'\n')
-                    fw.flush()
-
-
 
 if __name__ == '__main__':
     import argparse
 
     parser = argparse.ArgumentParser(description='embed_docs')
-    parser.add_argument('--config', type=str, default='iclm/config/embedding_example.yaml', help='embedding config')
+    parser.add_argument('--config', type=str, default='doc_process/config/embedding_example.yaml', help='embedding config')
     parser.add_argument('--num_process_nodes', type=int, default=8, help='Number of GPUs')
     args = parser.parse_args()
 
