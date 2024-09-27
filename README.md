@@ -9,6 +9,7 @@ cd LongMIT
 git clone https://github.com/WowCZ/InternEmbedding.git
 pip install -r requirements.txt
 ```
+* Note: [InternEmbedding](https://github.com/WowCZ/InternEmbedding) is a submodule of this repository.
 
 ## 🚀 Crafting Long Context MIT
 ### 1. Organize the private text corpus with embedding models
